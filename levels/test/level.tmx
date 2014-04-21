@@ -568,7 +568,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="function" width="16" height="16" visible="0">
+ <layer name="function" width="16" height="16">
   <properties>
    <property name="display" value="false"/>
    <property name="functional" value="true"/>
@@ -1093,9 +1093,11 @@
   </data>
  </layer>
  <objectgroup name="actions" width="16" height="16">
-  <object name="spawn" x="243" y="242" width="24" height="23">
+  <object name="spawn" x="214" y="209" width="30" height="29">
    <properties>
-    <property name="type" value="playerspawn"/>
+    <property name="behavior" value="player"/>
+    <property name="type" value="spawn"/>
+    <property name="view" value="player"/>
    </properties>
   </object>
   <object name="Martini" x="272" y="120" width="43" height="42">
@@ -1112,10 +1114,9 @@
   </object>
   <object name="TestNPC" x="303" y="226" width="54" height="50">
    <properties>
-    <property name="animator" value="Humti"/>
-    <property name="convo" value="humptiIntro"/>
-    <property name="onActivate" value="convo('humptiIntro'); "/>
-    <property name="type" value="npc"/>
+    <property name="behavior" value="base"/>
+    <property name="type" value="agent"/>
+    <property name="view" value="Humti"/>
    </properties>
   </object>
   <object name="testDetector01" x="122" y="116" width="43" height="42">
@@ -1125,12 +1126,11 @@
     <property name="type" value="detector"/>
    </properties>
   </object>
-  <object name="TestNPC" x="226" y="294" width="54" height="50">
+  <object name="TestNPC" x="216" y="300" width="54" height="50">
    <properties>
-    <property name="animator" value="Humti"/>
-    <property name="convo" value="humptiIntro"/>
-    <property name="onActivate" value="convo('humptiIntro'); "/>
-    <property name="type" value="npc"/>
+    <property name="behavior" value="confused"/>
+    <property name="type" value="agent"/>
+    <property name="view" value="zombie01"/>
    </properties>
   </object>
  </objectgroup>
