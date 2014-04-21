@@ -46,6 +46,14 @@ package dk.sebb.model
 			this.path = path;
 		}
 		
+		public function get tileHeight():int {
+			return tmxLoader.tileHeight;
+		}
+		
+		public function get tileWidth():int {
+			return tmxLoader.tileWidth;
+		}
+		
 		public function load(path:String = null):void {
 			this.path = path != null ? path:this.path;
 			

@@ -13,6 +13,9 @@ package dk.sebb.model.mobs
 		public var body:Body;
 		public var poly:Polygon;
 		
+		public var path:Array;
+		public var movementSpeed:int = 50;
+		
 		public var entity:String;
 		public var graphic:String;
 		

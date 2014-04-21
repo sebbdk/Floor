@@ -1126,7 +1126,21 @@
     <property name="type" value="detector"/>
    </properties>
   </object>
-  <object name="TestNPC" x="216" y="300" width="54" height="50">
+  <object name="TestNPC" x="193" y="346" width="54" height="50">
+   <properties>
+    <property name="behavior" value="confused"/>
+    <property name="type" value="agent"/>
+    <property name="view" value="zombie01"/>
+   </properties>
+  </object>
+  <object name="TestNPC" x="252" y="305" width="54" height="50">
+   <properties>
+    <property name="behavior" value="confused"/>
+    <property name="type" value="agent"/>
+    <property name="view" value="zombie01"/>
+   </properties>
+  </object>
+  <object name="TestNPC" x="330" y="338" width="54" height="50">
    <properties>
     <property name="behavior" value="confused"/>
     <property name="type" value="agent"/>

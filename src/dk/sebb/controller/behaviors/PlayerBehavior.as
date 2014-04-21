@@ -35,16 +35,16 @@ package dk.sebb.controller.behaviors
 		public function controllMovement(mob:Mob):void {
 			var moveVec:Vec2 = new Vec2();
 			
-			var vel:int = 60;
+			var vel:int = mob.movementSpeed;
 
 			if(Key.isDown(Keyboard.D)) {
 				moveVec.x += 1;
 			}
-			
+
 			if(Key.isDown(Keyboard.A)) {
 				moveVec.x += -1;
 			}
-			
+
 			if(Key.isDown(Keyboard.W)) {
 				moveVec.y += -1;
 			}
