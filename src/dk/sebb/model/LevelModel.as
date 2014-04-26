@@ -4,7 +4,7 @@ package dk.sebb.model
 	
 	import dk.sebb.model.events.ModelEvent;
 	import dk.sebb.model.mobs.Mob;
-	import dk.sebb.model.mobs.ObjectMob;
+	import dk.sebb.model.mobs.DetectorMob;
 	import dk.sebb.tiled.TMXLoader;
 	import dk.sebb.tiled.TileSet;
 	import dk.sebb.tiled.layers.Layer;
@@ -109,7 +109,7 @@ package dk.sebb.model
 							dispatchEvent(new ModelEvent(ModelEvent.ADDED_INT_MOB, mob));
 							break;
 						case 'detector':
-							mob = new ObjectMob(object, true);
+							mob = new DetectorMob(object, space);
 							break;
 						case 'agent':
 							mob = new Mob(object);

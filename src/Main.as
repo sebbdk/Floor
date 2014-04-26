@@ -18,6 +18,7 @@ package
 		private var starlingStage:Starling;
 
 		public static var shapeDebug:ShapeDebug = new ShapeDebug(512, 512);
+		public static var debug:Boolean = true; 
 		
 		public function Main()
 		{
@@ -27,7 +28,7 @@ package
 			Key.init(stage);
 			
 			// create our Starling instance
-			starlingStage = new Starling(StarlingStage, stage, new Rectangle(0,0, 512, 512));
+			starlingStage = new Starling(StarlingMain, stage, new Rectangle(0,0, 512, 512));
 			
 			// set anti-aliasing (higher the better quality but slower performance)
 			starlingStage.antiAliasing = 0;
@@ -35,11 +36,13 @@ package
 			// start it!
 			starlingStage.start();
 			
-			addChild(shapeDebug.display);
-			
-			var stats:Stats = new Stats()
-			stats.x = 512;
-			addChild(stats);
+			if(debug) {
+				addChild(shapeDebug.display);
+
+				var stats:Stats = new Stats()
+				stats.x = 512;
+				addChild(stats);
+			}
 		}
 	}
 }

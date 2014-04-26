@@ -13,12 +13,16 @@ package dk.sebb.controller
 	
 	public class LevelController extends EventDispatcher
 	{
-		private var model:LevelModel; 
+		public var model:LevelModel; 
 		
 		private var behaviorMap:Object = {
 			confused:new ConfusedBehavior(),
 			player:new PlayerBehavior()
 		};
+		
+		public function unload():void {
+			model = null;
+		}
 		
 		public function LevelController(model:LevelModel) {
 			this.model = model;

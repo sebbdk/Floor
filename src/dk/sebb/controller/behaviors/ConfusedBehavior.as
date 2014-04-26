@@ -7,7 +7,7 @@ package dk.sebb.controller.behaviors
 	import nape.geom.Vec2;
 	import nape.shape.Polygon;
 
-	public class ConfusedBehavior extends BaseBehavior implements IBehavior
+	public class ConfusedBehavior extends BaseBehavior implements IBehave
 	{	
 		public function ConfusedBehavior()
 		{
@@ -19,6 +19,8 @@ package dk.sebb.controller.behaviors
 			mob.body.shapes.add(poly);
 			mob.body.allowRotation = false;
 			mob.body.mass = 0.1;
+			
+			mob.movementSpeed = 20;
 		}
 		
 		public function run(mob:Mob, levelModel:LevelModel):void {
@@ -48,7 +50,8 @@ package dk.sebb.controller.behaviors
 		}
 		
 		public function findRandomPath(mob:Mob, levelModel:LevelModel):void {
-			//implement gentleman "wait" if the path is occupied
+			//@TODO Implement gentleman "wait" if the path is occupied
+			//@TODO Handle stuck and if lost(too far away from next point)
 			
 			if(!mob.path || mob.path.length === 0) {
 				var tilHeight:int = levelModel.tmxLoader.tileHeight;
@@ -57,8 +60,6 @@ package dk.sebb.controller.behaviors
 				var to:Vec2 = new Vec2(from.x + SMath.randomRange(-2, 2) ,from.y + SMath.randomRange(-2, 2));
 				var path:Array = levelModel.pathfinder.findPath(from, to);
 				mob.path = path;
-				
-				trace("pathfinding!!");
 			}
 		}
 	}

@@ -1,60 +1,62 @@
 package dk.sebb.model.mobs
 {
+	import dk.sebb.controller.behaviors.PlayerBehavior;
 	import dk.sebb.tiled.layers.TMXObject;
 	
-	import nape.callbacks.CbType;
+	import nape.callbacks.CbEvent;
+	import nape.callbacks.InteractionCallback;
 	import nape.callbacks.InteractionListener;
-	import nape.phys.BodyType;
+	import nape.callbacks.InteractionType;
 	import nape.shape.Polygon;
+	import nape.space.Space;
 
-	public class ObjectMob extends Mob
+	public class DetectorMob extends Mob
 	{
 		public var onEnterListener:InteractionListener;
 		public var onLeaveListener:InteractionListener;
-		public var collisionType:CbType = new CbType();
 		
-		public function ObjectMob(info:TMXObject, isSensor:Boolean = false, type:BodyType=null, color:uint=0x00FFFF)
+		public function DetectorMob(info:TMXObject, space:Space)
 		{
-			super(info, type);
+			super(info);
 
 			poly = new Polygon(Polygon.box(info.width, info.height));
-			poly.sensorEnabled = isSensor;
-			body.cbTypes.add(collisionType);
+			poly.sensorEnabled = true;
 			body.shapes.add(poly);
 			
-			/*
 			if(poly.sensorEnabled) {
 				onEnterListener = new InteractionListener(CbEvent.BEGIN, 
 					InteractionType.SENSOR,
 					collisionType,
-					Player.collisionType,
+					PlayerBehavior.collisionType,
 					onPlayerEnter);
 				
-				Level.space.listeners.add(onEnterListener);
+				space.listeners.add(onEnterListener);
 				
 				onLeaveListener = new InteractionListener(CbEvent.END, 
 					InteractionType.SENSOR,
 					collisionType,
-					Player.collisionType,
+					PlayerBehavior.collisionType,
 					onPlayerExit);
 				
-				Level.space.listeners.add(onLeaveListener);
+				space.listeners.add(onLeaveListener);
 			}
-			*/
+			
 			
 		}
-		/*
+		
 		private function onPlayerEnter(collision:InteractionCallback):void {
-			if(object.onEnter) {
-				Level.lua.doString(object.onEnter);
+			trace('enter!!');
+			if(info.onEnter) {
+				//Level.lua.doString(object.onEnter);
 			}
 		}
 		
 		private function onPlayerExit(collision:InteractionCallback):void {
-			if(object.onExit) {
-				Level.lua.doString(object.onExit);
+			trace('Exit!!');
+			if(info.onExit) {
+				//Level.lua.doString(object.onExit);
 			}
 		}
-		*/
+		
 	}
 }

@@ -2,6 +2,7 @@ package dk.sebb.model.mobs
 {
 	import dk.sebb.tiled.layers.TMXObject;
 	
+	import nape.callbacks.CbType;
 	import nape.geom.Vec2;
 	import nape.phys.Body;
 	import nape.phys.BodyType;
@@ -19,9 +20,14 @@ package dk.sebb.model.mobs
 		public var entity:String;
 		public var graphic:String;
 		
+		public var collisionType:CbType;
+		
 		public function Mob(info:TMXObject=null, type:BodyType=null) {
 			this.info = info;
 			body = new Body(type || BodyType.DYNAMIC, new Vec2(0, 0));
+			
+			collisionType = new CbType();
+			body.cbTypes.add(collisionType);
 			
 			if(info) {
 				body.position.x = info.x + (info.width/2);

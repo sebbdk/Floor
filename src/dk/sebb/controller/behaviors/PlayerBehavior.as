@@ -6,11 +6,14 @@ package dk.sebb.controller.behaviors
 	import dk.sebb.model.mobs.Mob;
 	import dk.sebb.util.Key;
 	
+	import nape.callbacks.CbType;
 	import nape.geom.Vec2;
 	import nape.shape.Polygon;
 	
-	public class PlayerBehavior extends BaseBehavior implements IBehavior
+	public class PlayerBehavior extends BaseBehavior implements IBehave
 	{
+		public static var collisionType:CbType;
+		
 		public function PlayerBehavior()
 		{
 			super();
@@ -26,6 +29,9 @@ package dk.sebb.controller.behaviors
 			mob.body.shapes.add(poly2);
 			
 			mob.body.allowRotation = false;
+			
+			collisionType = new CbType();
+			mob.body.cbTypes.add(collisionType);
 		}
 		
 		public function run(mob:Mob, levelModel:LevelModel):void {

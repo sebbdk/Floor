@@ -17,7 +17,8 @@ package dk.sebb.view
 	
 	public class LevelView extends Sprite
 	{
-		private var model:LevelModel; 
+		public var model:LevelModel; 
+		public var camera:Camera;
 		public var assets:AssetManager; 
 		
 		public var mobViewMap:Object = {
@@ -27,7 +28,14 @@ package dk.sebb.view
 		
 		public function LevelView(model:LevelModel) {
 			this.model = model;
+
 			model.addEventListener(ModelEvent.LOADED, onModelLoaded);
+		}
+		
+		public function unload(): void {
+			model.removeEventListener(ModelEvent.LOADED, onModelLoaded);
+			model = null;
+			assets = null;
 		}
 		
 		public function load():void {
